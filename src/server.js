@@ -1,10 +1,10 @@
 const express = require('express')
+const routes = require('./routes')
 
 const app = express()
 const server = require('http').Server(app)
 
-app.get('/', (req, res) => res.send('Hello api with Express'));
+app.use(express.json())
+app.use(routes)
 
-app.use(express.json)
-
-server.listen(3333);
+server.listen(process.env.PORT || 3333);
